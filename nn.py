@@ -12,11 +12,11 @@ print(f"TensorFlow version: {tf.__version__}")
 
 x_train, x_test = x_train / 255.0, x_test / 255.0
 
-
 model = keras.Sequential([
-    keras.layers.Flatten(input_shape=(28, 28)), 
+    keras.layers.Input(shape=(28, 28)),
+    keras.layers.Flatten(), 
     keras.layers.Dense(128, activation='relu'), 
-    keras.layers.Dense(10, activation='softmax')
+    keras.layers.Dense(10, activation='softmax') 
 ])
 
 
@@ -32,6 +32,7 @@ test_loss, test_acc = model.evaluate(x_test, y_test)
 
 
 predictions = model.predict(np.expand_dims(x_test[0], axis=0))
+
 
 plt.imshow(x_test[0], cmap=plt.cm.binary)
 plt.title(f"Prediction: {np.argmax(predictions)}")
