@@ -1,10 +1,14 @@
 import tensorflow as tf
-import tensorflow
+from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
 
 
+print(f"TensorFlow version: {tf.__version__}")
+
+
 (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+
 
 x_train, x_test = x_train / 255.0, x_test / 255.0
 
@@ -34,4 +38,4 @@ plt.title(f"Prediction: {np.argmax(predictions)}")
 plt.show()
 
 
-test_acc
+print(f"Test Accuracy: {test_acc}")
